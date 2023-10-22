@@ -21,11 +21,17 @@ Seamlessly switch between light and dark modes for a comfortable viewing experie
 
 # Tech Stack
 Jetpack Compose: Modern Android UI toolkit for building native UIs.
+
 Paging3 Library: Simplifies loading of large datasets from various sources efficiently.
+
 Dependency Injection: Utilized Dagger Hilt for dependency injection to ensure a clean and maintainable codebase.
+
 Clean Architecture: Ensures separation of concerns and easy scalability.
+
 Room Database: Android's SQLite database for storing anime data locally.
+
 Retrofit: A powerful HTTP client for making network requests.
+
 Dark Mode Support: Enhances user experience by providing a visually appealing dark mode option.
 
 
