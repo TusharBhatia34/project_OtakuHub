@@ -9,11 +9,14 @@ OtakuHub is a feature-rich anime app designed for anime enthusiasts, providing a
 # Features
 ## Intuitive Home Screen
 Search Bar: Easily search for your favorite anime series.
+
 Filter Dialog: Filter anime based on various criteria to find exactly what you're looking for.
+
 List of All Anime: Browse through an extensive collection of anime series.
 
 ## Detailed Anime Information
 Navigate to a dedicated screen for each anime series.
+
 View comprehensive information about the selected anime, including synopsis, release date, genres, and more.
 
 ## Support for Dark Mode
