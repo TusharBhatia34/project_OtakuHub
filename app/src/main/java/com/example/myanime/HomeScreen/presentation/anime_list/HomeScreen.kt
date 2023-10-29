@@ -70,7 +70,9 @@ if (anime.loadState.refresh is LoadState.Loading){
                     searchBar(
                         Modifier
                             .weight(3.5f)
-                            .padding(10.dp)
+                            .padding(10.dp),
+                        navController,
+                        viewModel
                     )
 
                     IconButton(

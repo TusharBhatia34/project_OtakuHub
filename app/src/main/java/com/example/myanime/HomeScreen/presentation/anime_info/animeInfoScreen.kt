@@ -95,14 +95,23 @@ Icon(imageVector = Icons.Default.KeyboardArrowLeft, contentDescription = null
               Text(text = state.name, color = MaterialTheme.colorScheme.onSecondary, fontWeight = FontWeight.Bold)
                 Spacer(modifier = Modifier.size(8.dp))
                 Row {
-                    Icon(imageVector = Icons.Default.Star, contentDescription = null,modifier = Modifier
-                        .background(color = Color.Yellow)
-                        .height(17.dp))
+                    Icon(
+                        imageVector = Icons.Default.Star,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .background(color = Color.Yellow)
+                            .height(17.dp)
+                    )
                     Spacer(modifier = Modifier.size(5.dp))
-                    Text(text =state.score.toString(), color = MaterialTheme.colorScheme.onSecondary)
+                    Text(
+                        text = state.score.toString(),
+                        color = MaterialTheme.colorScheme.onSecondary
+                    )
                     Spacer(modifier = Modifier.size(5.dp))
-                    AutoTextSize(name = "(scored by ${state.scoredBy} users)",Modifier.align(Alignment.Bottom))
-                  //  Text(text = "(scored by ${state.scoredBy} users)", fontSize = 10.sp , modifier = Modifier.align(Alignment.Bottom), color = MaterialTheme.colorScheme.onSecondary)
+                    AutoTextSize(
+                        name = "(scored by ${state.scoredBy} users)",
+                        Modifier.align(Alignment.Bottom)
+                    )
                 }
                 Spacer(modifier = Modifier.size(8.dp))
                 Text(text = "status: ${state.status}", color = MaterialTheme.colorScheme.onSecondary)
@@ -128,9 +137,7 @@ Icon(imageVector = Icons.Default.KeyboardArrowLeft, contentDescription = null
         }
         Text(text = "About", fontWeight = FontWeight.ExtraBold, fontSize = 20.sp,
             modifier= Modifier.padding(top = 16.dp, bottom = 6.dp), color = MaterialTheme.colorScheme.onSecondary)
-Text(text = "${state.synopsis!!.substringBefore("[")}", fontSize = 15.sp, color = MaterialTheme.colorScheme.onSecondary)
-
-
+Text(text = "${state.synopsis!!.substringBefore("[").substringBefore("(")}", fontSize = 15.sp, color = MaterialTheme.colorScheme.onSecondary)
 
     }
 }

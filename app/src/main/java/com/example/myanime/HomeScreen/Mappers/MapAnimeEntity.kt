@@ -5,7 +5,6 @@ import com.example.myanime.HomeScreen.data.local.AnimeEntity
 
 fun AnimeEntity.toAnime():Anime{
     return Anime(
-        id = id,
         name = name,
         imageUrl = imageUrl,
         totalEpisodes = totalEpisodes,

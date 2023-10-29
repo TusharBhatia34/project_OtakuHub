@@ -5,17 +5,17 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "animeList")
 data class AnimeEntity(
-    @PrimaryKey
-    val id:Int,
+    @PrimaryKey(autoGenerate = true)
+    val id:Int=0,
     val name:String
-    ,val imageUrl:String
-    ,val totalEpisodes:Int,
-    val aired:String,
-    val status:String,
-    val rating:String,
+    ,val imageUrl:String?
+    ,val totalEpisodes:Int?,
+    val aired:String?,
+    val status:String?,
+    val rating:String?,
     val score:Double?,
     val scoredBy:Int?,
-    val synopsis:String,
-    var studio: String,
-  val genres:List<String>
+    val synopsis:String?,
+    var studio: String?,
+  val genres:List<String>?
 )

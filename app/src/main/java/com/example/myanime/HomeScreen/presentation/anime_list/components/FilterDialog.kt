@@ -51,7 +51,6 @@ fun filterDialog(viewModel: AnimeViewModel) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-//               .height(560.dp)
                 .width(350.dp)
             , colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.primary
@@ -228,10 +227,4 @@ Spacer(modifier = Modifier.weight(1f))
 
         }
     }
-}
-
-@Preview
-@Composable
-fun fil() {
-
 }

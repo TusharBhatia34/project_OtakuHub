@@ -1,13 +1,9 @@
-package com.example.animelist.domain.model
+package com.example.myanime.HomeScreen.domain.model
 
-
-
-
-
-data class Anime(
+data class SearchAnime(
     val name:String
-    ,val imageUrl:String? ,
-    val totalEpisodes:Int?,
+    ,val imageUrl:String ,
+    val totalEpisodes:Int,
     val aired:String?,
     val status:String?,
     val rating:String?,
@@ -15,5 +11,5 @@ data class Anime(
     val scoredBy:Int?,
     val synopsis:String?,
     val studio: String?,
- val genres:List<String>?
+    val genres:List<String>?
 )

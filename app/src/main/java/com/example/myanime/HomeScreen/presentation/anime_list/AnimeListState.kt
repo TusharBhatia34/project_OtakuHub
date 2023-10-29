@@ -4,10 +4,10 @@ import android.app.AlertDialog
 
 data class AnimeListState(
     val showDialog: Boolean=false,
-
+    var query:String="",
     val name:String = ""
-    ,val imageUrl:String ="",
-    val totalEpisodes:Int=0,
+    , val imageUrl:String? ="",
+    val totalEpisodes:Int?=0,
     val aired:String? = "gg",
     val status:String?="",
     val rating:String?="",

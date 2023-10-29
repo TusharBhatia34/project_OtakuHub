@@ -2,10 +2,13 @@
 
 package com.example.myanime.HomeScreen.presentation.anime_list.components
 
+import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
@@ -29,20 +32,26 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.example.animelist.common.Constants
+import com.example.myanime.HomeScreen.presentation.AnimeViewModel
+import kotlinx.coroutines.delay
 
 
 @Composable
-fun searchBar(modifier:Modifier) {
+fun searchBar(modifier:Modifier,navController: NavController,viewModel: AnimeViewModel) {
 
 
    var text by remember{ mutableStateOf("")  }
 
-        OutlinedTextField( modifier = Modifier
+        OutlinedTextField(
+            modifier = Modifier
             .then(modifier)
             .height(50.dp)
-
             ,value = text,
             onValueChange = { text = it}
             , colors = OutlinedTextFieldDefaults.colors(
@@ -66,25 +75,11 @@ fun searchBar(modifier:Modifier) {
 
             }
             , singleLine = true
+            , keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search)
+            , keyboardActions = KeyboardActions(onSearch = {
+                viewModel.setQuery(query = text)
+                navController.navigate(Constants.SEARCH_ANIME_ROUTE)
+            })
         )
 
-
-//    var active by remember{ mutableStateOf(false)  }
-//    SearchBar(
-//        modifier = modifier,
-//        query = text,
-//        onQueryChange = {text = it},
-//        onSearch = { active= false},
-//        active = active,
-//        onActiveChange ={ active =  it},
-//        placeholder = { Text(text = "Search") },
-//        leadingIcon = {
-//            Icon(imageVector = Icons.Default.Search, contentDescription = null )
-//        },
-//        trailingIcon = {
-//            Icon(imageVector = Icons.Default.Close, contentDescription = null )
-//        }
-//    ) {
-//
-//    }
 }

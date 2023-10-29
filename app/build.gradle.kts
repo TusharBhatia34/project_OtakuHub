@@ -106,6 +106,8 @@ dependencies {
     implementation ("androidx.room:room-paging:2.5.2")
 
     implementation("androidx.navigation:navigation-compose:2.7.4")
+
+
 }
 
 //DaggerHilt

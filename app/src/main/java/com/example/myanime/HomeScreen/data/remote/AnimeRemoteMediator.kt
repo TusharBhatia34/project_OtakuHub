@@ -43,26 +43,34 @@ class AnimeRemoteMediator @Inject constructor(
            delay(2000L)
            val anime = jikanApi.getAnimeList(
                currentPage = loadkey,
-               pageSize = state.config.pageSize
+               pageSize = state.config.pageSize,
+               orderBy = "popularity"
            )
-
 
 Constants.name = anime.pagination.currentPage.toString()
            val animeEntity:List<AnimeEntity> = anime.data.map {
                if(it.studios.isEmpty()){
-                   Log.d("check","something is null ${it.malId} ")
                    it.studios = listOf(
                        Studio(1,"Unknown","unknown","unknown")
                    )
                }
-                   it.toAnimeEntity()
+             if(it.score==null){
+                   it.score=10.0
+               }
+                if(it.scoredBy==0){
+                   it.scoredBy=10
+               }
+               if(it.rank==null){
+                   it.rank=10
+               }
+               if(it.synopsis==null){
+                   it.synopsis="Currently not available"
+               }
+            it.toAnimeEntity()
            }
 
-                  Log.d("check","update is working ${anime.pagination.currentPage}")
-
-                  AnimeDb.dao.upsertAll(animeEntity)
-             // }
-
+           delay(1000L)
+              AnimeDb.dao.upsertAll(animeEntity)
 
             MediatorResult.Success(endOfPaginationReached = !anime.pagination.hasNextPage)
         } catch (e: HttpException) {

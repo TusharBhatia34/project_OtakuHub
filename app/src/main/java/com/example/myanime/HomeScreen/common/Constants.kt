@@ -7,6 +7,8 @@ object Constants {
     const val END_POINT = "anime"
 
     lateinit var name: String
+     var key:Int=1
     const val HOME_SCREEN_ROUTE="animelistScreen"
     const val ANIME_INFO_ROUTE="animeInfoScreen"
+    const val SEARCH_ANIME_ROUTE="animeSearchScreen"
 }

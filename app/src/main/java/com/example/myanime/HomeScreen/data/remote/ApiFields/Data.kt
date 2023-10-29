@@ -28,27 +28,27 @@ data class Data(
     @SerializedName("members")
     val members: Int,
     @SerializedName("popularity")
-    val popularity: Int,
+    var popularity: Int,
     @SerializedName("producers")
     val producers: List<Producer>,
     @SerializedName("rank")
-    val rank: Int,
+    var rank: Int,
     @SerializedName("rating")
     val rating: String,
     @SerializedName("score")
-    val score: Double,
+    var score: Double,
     @SerializedName("scored_by")
-    val scoredBy: Int,
+    var scoredBy: Int,
     @SerializedName("season")
     val season: String,
     @SerializedName("source")
     val source: String,
     @SerializedName("status")
-    val status: String,
+    var status: String,
     @SerializedName("studios")
     var studios: List<Studio>,
     @SerializedName("synopsis")
-    val synopsis: String,
+    var synopsis: String,
     @SerializedName("themes")
     val themes: List<Theme>,
     @SerializedName("title")
