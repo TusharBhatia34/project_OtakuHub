@@ -23,7 +23,6 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun genreBox(genreList:List<String>?) {
-
     if (genreList != null) {
         genreList.forEach {genre->
             Box(contentAlignment = Alignment.Center, modifier = Modifier
@@ -36,13 +35,5 @@ fun genreBox(genreList:List<String>?) {
         }
     }
 
-
-
-
 }
 
-@Preview
-@Composable
-fun g() {
-genreBox(genreList = listOf("Adventure","Action","Horror"))
-}

@@ -23,20 +23,13 @@ class MainActivity : ComponentActivity() {
                 val viewModel = hiltViewModel<AnimeViewModel>()
                 val anime = viewModel.pagerFlow.collectAsLazyPagingItems()
                 val searchAnime=viewModel.searchFlow.collectAsLazyPagingItems()
+                val filterAnime=viewModel.filterFlow.collectAsLazyPagingItems()
                 val state by viewModel.state.collectAsState()
                 val navController = rememberNavController()
-                NavGraph(navController = navController,state.showDialog,anime,viewModel,searchAnime,state)
+                NavGraph(navController = navController,state.showDialog,anime,viewModel,searchAnime,state,filterAnime)
 
             }
         }
     }
 }
 
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MyAnimeTheme {
-
-    }
-}

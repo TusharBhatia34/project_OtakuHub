@@ -13,8 +13,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -24,23 +22,15 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.VerticalAlignmentLine
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
-import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.animelist.domain.model.Anime
-import com.example.animelist.presentation.anime_list.AnimeList
+import com.example.animelist.presentation.anime_list.animeList
 import com.example.myanime.HomeScreen.presentation.AnimeViewModel
 import com.example.myanime.HomeScreen.presentation.anime_list.components.filterDialog
 import com.example.myanime.HomeScreen.presentation.anime_list.components.searchBar
@@ -97,9 +87,9 @@ if (anime.loadState.refresh is LoadState.Loading){
             .padding(it)) {
             if (showDialog){
 
-                filterDialog(viewModel)
+                filterDialog(viewModel,navController)
             }
-            AnimeList(anime = anime,navController,viewModel)
+            animeList(anime = anime,navController,viewModel)
 
         }
 

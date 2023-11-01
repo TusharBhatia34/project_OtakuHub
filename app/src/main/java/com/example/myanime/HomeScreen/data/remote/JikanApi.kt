@@ -22,5 +22,13 @@ interface jikanApi {
          @Query("page") currentPage: Int,
          @Query("limit") pageSize:Int=20
     ): AnimeDto
+  @GET(Constants.END_POINT)
+    suspend fun getAnimeFilter(
+       @Query("genres") genres:String,
+       @Query("page") currentPage: Int,
+       @Query("limit") pageSize:Int=20,
+       @Query("order_by")orderBy: String="popularity",
+       @Query("genres_exclude")genresExclude:String="9,49,12"
+    ): AnimeDto
 
 }

@@ -15,7 +15,6 @@ val LightOutline =Color(0xFF938F99)
 
 //Light colors
 val White = Color(0xFFFDFCFD)
-val Pink2 = Color(0xFF993F61)
 val DarkWhite = Color(0xFFE7E0EC)
 val MediumPurple = Color(0xFF6750A4)
 val DarkOutline = Color(0xFF79747E)

@@ -1,7 +1,6 @@
 package com.example.myanime.HomeScreen.presentation
 
 import android.util.Log
-
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
@@ -9,12 +8,12 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
+import com.example.animelist.domain.model.Anime
 import com.example.myanime.HomeScreen.Mappers.toAnime
 import com.example.myanime.HomeScreen.data.local.AnimeEntity
+import com.example.myanime.HomeScreen.data.remote.FilterPagingSource
 import com.example.myanime.HomeScreen.data.remote.SearchPagingSource
 import com.example.myanime.HomeScreen.data.remote.jikanApi
-import com.example.myanime.HomeScreen.domain.model.SearchAnime
-import com.example.myanime.HomeScreen.presentation.anime_list.AnimeListState
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -39,8 +38,10 @@ val pagerFlow = pager
             pagingData.map { it.toAnime() }
         }.cachedIn(viewModelScope)
 
-private val _searchFlow= MutableStateFlow<PagingData<SearchAnime>>(PagingData.empty())
+private val _searchFlow= MutableStateFlow<PagingData<Anime>>(PagingData.empty())
     val searchFlow = _searchFlow.asStateFlow()
+    private val _filterFlow= MutableStateFlow<PagingData<Anime>>(PagingData.empty())
+    val filterFlow = _filterFlow.asStateFlow()
  private fun flow(){
 viewModelScope.launch {
 
@@ -78,6 +79,20 @@ viewModelScope.launch {
             flow()
 
     }
+
+
+  fun toPassGenres(genres: String){
+            viewModelScope.launch {
+
+                Pager(PagingConfig(pageSize = 20),
+                    pagingSourceFactory = {
+                        FilterPagingSource(jikanApi = jikanApi,  genres =genres)
+                    }).flow.cachedIn(viewModelScope).collect{
+
+                    _filterFlow.value=it
+                }
+            }
+    }
     fun setContent(
                     name:String,
                     imageUrl:String?,
@@ -91,7 +106,6 @@ viewModelScope.launch {
                     studio:String?,
                     genres:List<String>?
     ){
-
         _state.update {
             it.copy(
                 name = name,

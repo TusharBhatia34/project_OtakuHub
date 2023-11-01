@@ -1,6 +1,5 @@
 package com.example.myanime
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -8,10 +7,10 @@ import androidx.navigation.compose.composable
 import androidx.paging.compose.LazyPagingItems
 import com.example.animelist.common.Constants
 import com.example.animelist.domain.model.Anime
-import com.example.myanime.HomeScreen.domain.model.SearchAnime
 import com.example.myanime.HomeScreen.presentation.AnimeViewModel
 import com.example.myanime.HomeScreen.presentation.anime_info.animeInfoScreen
-import com.example.myanime.HomeScreen.presentation.anime_list.AnimeListState
+import com.example.myanime.HomeScreen.presentation.AnimeListState
+import com.example.myanime.HomeScreen.presentation.anime_filter.filterResultScreen
 import com.example.myanime.HomeScreen.presentation.anime_list.homeScreen
 import com.example.myanime.HomeScreen.presentation.anime_search.searchResultScreen
 
@@ -21,8 +20,10 @@ fun NavGraph(
     showDialog: Boolean,
     anime:LazyPagingItems<Anime>,
     viewModel: AnimeViewModel,
-    searchAnime:LazyPagingItems<SearchAnime>,
-    state: AnimeListState) {
+    searchAnime:LazyPagingItems<Anime>,
+    state: AnimeListState,
+    filterAnime:LazyPagingItems<Anime>
+) {
 
     NavHost(navController = navController , startDestination = Constants.HOME_SCREEN_ROUTE ){
         composable(route = Constants.HOME_SCREEN_ROUTE){
@@ -44,6 +45,14 @@ fun NavGraph(
            searchResultScreen(
                navController = navController,
              searchAnime = searchAnime,
+               state = state,
+               viewModel = viewModel
+           )
+        }
+        composable(route = Constants.FILTER_ANIME_ROUTE ){
+           filterResultScreen(
+               navController = navController,
+             filterAnime = filterAnime,
                state = state,
                viewModel = viewModel
            )

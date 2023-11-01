@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.example.myanime.HomeScreen.presentation.anime_search
+package com.example.myanime.HomeScreen.presentation.anime_filter
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -22,7 +22,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.paging.LoadState
@@ -32,17 +31,18 @@ import com.example.animelist.presentation.anime_list.animeList
 import com.example.myanime.HomeScreen.presentation.AnimeViewModel
 import com.example.myanime.HomeScreen.presentation.AnimeListState
 
+
 @Composable
-fun searchResultScreen(
+fun filterResultScreen(
     navController: NavController,
-    searchAnime:LazyPagingItems<Anime>,
+    filterAnime:LazyPagingItems<Anime>,
     state: AnimeListState
     , viewModel: AnimeViewModel
 ) {
 
 Scaffold(
     topBar = {
-        TopAppBar(title = { Text(text =state.query, overflow = TextOverflow.Ellipsis, maxLines = 1,color = MaterialTheme.colorScheme.onSecondary)}, navigationIcon = {
+        TopAppBar(title = {Text(text = "")}, navigationIcon = {
             IconButton(onClick = { navController.popBackStack() }) {
                 Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null , tint = MaterialTheme.colorScheme.onSecondary)
             }
@@ -59,10 +59,10 @@ Column(modifier = Modifier
     , verticalArrangement = Arrangement.Center,
     horizontalAlignment = Alignment.CenterHorizontally
     ) {
-    if (searchAnime.loadState.refresh is LoadState.Loading){
+    if (filterAnime.loadState.refresh is LoadState.Loading){
         CircularProgressIndicator(color = MaterialTheme.colorScheme.background)
     } 
-    else if (searchAnime.itemCount==0){
+    else if (filterAnime.itemCount==0){
         Text(
             text = "No results found!",
             textAlign = TextAlign.Center,
@@ -71,7 +71,7 @@ Column(modifier = Modifier
         )
     }
     else{
-        animeList(anime = searchAnime ,navController = navController, viewModel = viewModel)
+        animeList(anime = filterAnime ,navController = navController, viewModel = viewModel)
     }
 }
 }

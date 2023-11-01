@@ -1,4 +1,4 @@
-package com.example.myanime.HomeScreen.presentation.anime_list
+package com.example.myanime.HomeScreen.presentation
 
 import android.app.AlertDialog
 
@@ -15,6 +15,7 @@ data class AnimeListState(
     val scoredBy:Int?=0,
     val synopsis:String?="",
     val studio: String?="",
-    val genres:List<String>? = listOf("Action")
+    val genres:List<String>? = listOf("Action"),
+   // var filterGenres:String = ""
 
 )
